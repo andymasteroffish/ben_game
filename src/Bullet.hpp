@@ -33,6 +33,8 @@ public:
     
     Player * parent;
     
+    float displayAngle;
+    
 };
 
 #endif /* Bullet_hpp */

@@ -11,7 +11,7 @@
 void Bullet::setup(float x, float y, float angle, Player * _parent){
     parent = _parent;
     
-    float speed = 200;
+    float speed = 150;
     
     size = 6;
     outOfBoundsSize = 2;
@@ -22,6 +22,8 @@ void Bullet::setup(float x, float y, float angle, Player * _parent){
     
     outOfBounds = false;
     killMe = false;
+    
+    displayAngle = ofRadToDeg(angle);
 }
 
 void Bullet::update(float deltaTime, float arenaSize){
@@ -40,7 +42,21 @@ void Bullet::update(float deltaTime, float arenaSize){
 }
 
 void Bullet::draw(){
-    ofSetColor(parent->color);
-    ofFill();
-    ofDrawCircle(pos.x, pos.y, size);
+    
+    for (int i=0; i<2; i++){
+        if (i==0){
+            ofSetColor(parent->color);
+            ofFill();
+        }else{
+            ofSetColor(230);
+            ofNoFill();
+        }
+        
+        ofPushMatrix();
+        ofTranslate(pos.x, pos.y);
+        ofRotate(displayAngle);
+        ofSetCircleResolution(3);
+        ofDrawCircle(0,0, size);
+        ofPopMatrix();
+    }
 }

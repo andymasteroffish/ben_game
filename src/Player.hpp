@@ -15,8 +15,9 @@ class Player{
 public:
     
     void setup(int idNum, float _distFromCenter);
-    void update(float deltaTime, float deathAngle);
+    void update(float deltaTime, float deathAngle1, float deathAngle2);
     void draw();
+    void drawPaddle();
     void buttonPress();
     
     bool checkIfAngleIsInside(float otherAngle);
@@ -49,6 +50,9 @@ public:
     float height;
     
     bool isDead;
+    
+    float shootEffectTime;
+    float shootEffectTimer;
     
 };
 
